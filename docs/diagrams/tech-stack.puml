@@ -1,0 +1,52 @@
+@startuml UniSwap_TechStack
+!theme cyborg-outline
+skinparam backgroundColor transparent
+skinparam defaultFontName Inter
+skinparam roundcorner 15
+skinparam rectangle {
+    BorderColor #e94560
+    BackgroundColor #16213e
+}
+
+title UniSwap - Technology Stack
+
+rectangle "**FRONTEND**" as frontend #1a1a2e {
+    rectangle "HTML5 / CSS3 / JavaScript" as html #16213e
+    rectangle "React / Next.js" as react #16213e
+    rectangle "Responsive Design" as responsive #16213e
+}
+
+rectangle "**BACKEND**" as backend #0f3460 {
+    rectangle "Node.js" as node #16213e
+    rectangle "Express.js" as express #16213e
+    rectangle "RESTful API" as rest #16213e
+}
+
+rectangle "**DATABASE**" as database #533483 {
+    rectangle "PostgreSQL" as postgres #16213e
+}
+
+rectangle "**CLOUD SERVICES**" as cloud #e94560 {
+    rectangle "Cloudinary\n(Images)" as cloudinary #16213e
+    rectangle "Open Library API\n(Book Data)" as openlib #16213e
+}
+
+rectangle "**DEPLOYMENT**" as deploy #1a1a2e {
+    rectangle "Netlify / Vercel\n(Frontend)" as netlify #16213e
+    rectangle "Render / Railway\n(Backend)" as render #16213e
+}
+
+rectangle "**SECURITY & QUALITY**" as security #0f3460 {
+    rectangle "HTTPS / JWT" as https #16213e
+    rectangle "GDPR Compliant" as gdpr #16213e
+    rectangle "GitHub Actions CI" as ci #16213e
+    rectangle "WCAG 2.1 AA" as wcag #16213e
+}
+
+frontend -[hidden]down-> backend
+backend -[hidden]down-> database
+database -[hidden]down-> cloud
+cloud -[hidden]down-> deploy
+deploy -[hidden]down-> security
+
+@enduml

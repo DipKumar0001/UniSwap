@@ -14,61 +14,75 @@ UniSwap addresses the challenge of expensive textbooks and sustainability concer
 
 ---
 
-## ✨ Features
+## 🏗️ System Architecture
+
+<p align="center">
+  <img src="docs/diagrams/UniSwap_Architecture.svg" alt="System Architecture" width="100%">
+</p>
+
+---
+
+## ✨ Features Overview
+
+<p align="center">
+  <img src="docs/diagrams/UniSwap_Features.svg" alt="Features Overview" width="100%">
+</p>
 
 ### 📋 Listings (Core)
 - Create listings with photos, titles, and descriptions
 - Specify item condition
-- Categorise by:
-  - **Subject** area
-  - **Module code**
-  - **Type** (Book / Notes / Equipment)
+- Categorise by: **Subject**, **Module code**, **Type** (Book / Notes / Equipment)
 
 ### 👤 User Management (Core)
 - Student registration & login (university email only)
-- User profiles with:
-  - Display name
-  - Course information
-  - Contact preferences
+- User profiles with display name, course info, and contact preferences
 - GDPR compliant with minimal personal data collection
-- Full user control over listings
 
 ### 🔍 Search & Discovery
-- **Keyword search** across all listings
-- **Filters**:
-  - Category
-  - Subject
-  - Availability
-  - Location (On-campus zones: Library / Main Campus)
+- Keyword search across all listings
+- Filters: Category, Subject, Availability, Location zones
 
 ### 🔗 External Integrations
 - **Open Library API**: Auto-populate book details using ISBN
-- **Book Cover Images**: Automatic fetching from Open Library
-- **Maps API** (Optional): Display pickup zones
+- **Cloudinary**: Image storage and optimization
+- **Maps API**: Display pickup zones (optional)
 
 ### 💬 Communication
-- In-app request system:
-  - "Request Item" functionality
-  - Accept / Decline responses
+- In-app request system with Accept/Decline functionality
 
-### ⭐ Community Features
-- Simple rating system (1–5 stars)
-
-### 🎮 Gamification
-- **Points System**: +10 points per shared item
-- **Badges**:
-  - 🥇 First Share
-  - 🌱 Sustainability Supporter
-- Ethical design with transparent scoring (no addictive loops)
+### ⭐ Community & Gamification
+- 1-5 star rating system
+- Points: +10 per shared item
+- Badges: 🥇 First Share, 🌱 Sustainability Supporter
 
 ### 📊 Analytics Dashboard
-**Personal Impact:**
-- Items shared count
-- Estimated money saved
+- Personal impact: Items shared, money saved
+- Community impact: Total reused items, CO₂ reduction
 
-**Community Impact:**
-- Total reused items
-- Estimated CO₂ reduction
+---
+
+## 🗺️ User Journey
+
+<p align="center">
+  <img src="docs/diagrams/UniSwap_UserFlow.svg" alt="User Flow" width="100%">
+</p>
+
+---
+
+## � Technology Stack
+
+<p align="center">
+  <img src="docs/diagrams/UniSwap_TechStack.svg" alt="Tech Stack" width="100%">
+</p>
+
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | HTML5, CSS3, JavaScript, React/Next.js |
+| **Backend** | Node.js, Express.js, RESTful API |
+| **Database** | PostgreSQL |
+| **Cloud** | Cloudinary (Images), Open Library API |
+| **Deployment** | Netlify/Vercel (Frontend), Render/Railway (Backend) |
+| **Security** | HTTPS, JWT, GDPR Compliant, WCAG 2.1 AA |
 
 ---
 
@@ -77,34 +91,10 @@ UniSwap addresses the challenge of expensive textbooks and sustainability concer
 | Requirement | Implementation |
 |-------------|----------------|
 | **Responsive Design** | Mobile-first approach, desktop & mobile layouts |
-| **Accessibility** | WCAG 2.1 AA compliant (alt text, keyboard nav, high contrast, screen-reader labels) |
-| **UX & Navigation** | Simple navigation (Browse, Add Item, Profile), clear CTAs |
-| **Security & Privacy** | Hashed passwords, HTTPS, data minimisation, GDPR compliance |
-| **Testing & CI** | Unit tests (Login, Listings), GitHub Actions CI |
-
----
-
-## 🏗️ Tech Stack
-
-### Frontend
-- HTML5 / CSS3 / JavaScript
-- Responsive design framework
-- Deployment: **Netlify** / **Vercel**
-
-### Backend
-- Node.js / Express (or similar)
-- RESTful API architecture
-- Deployment: **Render** / **Railway**
-
-### Database
-- **PostgreSQL**
-
-### Media Storage
-- **Cloudinary** for image hosting
-
-### External APIs
-- **Open Library API** – Book metadata & covers
-- **Maps API** – Pickup zone display (optional)
+| **Accessibility** | WCAG 2.1 AA (alt text, keyboard nav, high contrast) |
+| **UX & Navigation** | Simple navigation (Browse, Add Item, Profile) |
+| **Security & Privacy** | Hashed passwords, HTTPS, data minimisation |
+| **Testing & CI** | Unit tests, GitHub Actions CI |
 
 ---
 
@@ -127,7 +117,6 @@ npm install
 
 # Set up environment variables
 cp .env.example .env
-# Edit .env with your configuration
 
 # Run database migrations
 npm run migrate
@@ -151,22 +140,20 @@ SESSION_SECRET=your-secret-key
 
 ```
 UniSwap/
+├── docs/
+│   └── diagrams/        # Architecture & flow diagrams (SVG)
 ├── public/              # Static assets
 ├── src/
 │   ├── components/      # UI components
 │   ├── pages/           # Page components
 │   ├── services/        # API services
-│   ├── utils/           # Utility functions
 │   └── styles/          # CSS/SCSS files
 ├── server/
 │   ├── controllers/     # Route controllers
 │   ├── models/          # Database models
-│   ├── routes/          # API routes
-│   └── middleware/      # Custom middleware
+│   └── routes/          # API routes
 ├── tests/               # Test files
-├── .github/
-│   └── workflows/       # CI/CD pipelines
-└── docs/                # Documentation
+└── .github/workflows/   # CI/CD pipelines
 ```
 
 ---
@@ -174,34 +161,22 @@ UniSwap/
 ## 🧪 Testing
 
 ```bash
-# Run unit tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
-
-# Run linting
-npm run lint
+npm test              # Run unit tests
+npm run test:coverage # Run with coverage
+npm run lint          # Run linting
 ```
-
----
-
-## 📱 Screenshots
-
-*Coming soon...*
 
 ---
 
 ## 🗺️ Roadmap
 
-- [x] Project setup & architecture
+- [x] Project setup & architecture diagrams
 - [ ] User authentication system
 - [ ] Listings CRUD functionality
 - [ ] Search & filter implementation
 - [ ] Open Library API integration
 - [ ] Request/response system
-- [ ] Rating system
-- [ ] Gamification features
+- [ ] Rating & gamification features
 - [ ] Analytics dashboard
 - [ ] Production deployment
 
@@ -211,7 +186,7 @@ npm run lint
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
@@ -226,14 +201,6 @@ npm run lint
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgements
-
-- [Open Library](https://openlibrary.org/) for book metadata API
-- [Cloudinary](https://cloudinary.com/) for image hosting
-- All contributors and testers
 
 ---
 

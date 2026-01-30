@@ -1,0 +1,47 @@
+@startuml UniSwap_Architecture
+!theme cyborg-outline
+skinparam backgroundColor transparent
+skinparam defaultFontName Inter
+skinparam defaultFontSize 12
+skinparam roundcorner 15
+skinparam componentStyle rectangle
+
+title UniSwap - System Architecture
+
+package "Frontend" as FE #1a1a2e {
+    component "React/Next.js\nWeb App" as webapp #16213e
+    component "Responsive UI\nMobile-First" as ui #16213e
+    component "State Management" as state #16213e
+}
+
+package "Backend" as BE #0f3460 {
+    component "Express.js\nREST API" as api #1a1a2e
+    component "Authentication\nJWT/Sessions" as auth #1a1a2e
+    component "Business Logic\nServices" as services #1a1a2e
+}
+
+database "PostgreSQL" as db #e94560
+
+cloud "External Services" as EXT #533483 {
+    component "Open Library API\n(Book Metadata)" as openlib #1a1a2e
+    component "Cloudinary\n(Image Storage)" as cloudinary #1a1a2e
+    component "Maps API\n(Pickup Zones)" as maps #1a1a2e
+}
+
+cloud "Deployment" as DEPLOY #0f3460 {
+    component "Netlify/Vercel\n(Frontend)" as frontend_host #1a1a2e
+    component "Render/Railway\n(Backend)" as backend_host #1a1a2e
+}
+
+webapp --> api : HTTPS
+api --> db : SQL
+api --> openlib : REST
+api --> cloudinary : REST
+api --> maps : REST
+auth --> db
+services --> db
+
+FE -[hidden]down-> BE
+BE -[hidden]down-> EXT
+
+@enduml
