@@ -194,7 +194,9 @@ npm run lint          # Run linting
 
 ## 👥 Team
 
-- **Dipesh Yadav** - [GitHub](https://github.com/DipKumar0001)
+- **Dipesh Kumar Yadav** - [GitHub](https://github.com/DipKumar0001)
+- **Ankesh Kumar Baitha** - [GitHub](https://github.com/ankeshrajak)
+- **Sohan Giri** - [GitHub](https://github.com/sohan0911)
 
 ---
 
